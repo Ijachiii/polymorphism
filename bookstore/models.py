@@ -25,7 +25,7 @@ class Book(models.Model):
     )
 
     #specific attributes
-    extra = JSONField()
+    extra = JSONField(default={"brus": 200})
 
 
     def __str__(self) -> str:
