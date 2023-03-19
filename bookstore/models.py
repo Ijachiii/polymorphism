@@ -56,4 +56,4 @@ class Cart(models.Model):
         primary_key=True,
         on_delete=models.CASCADE
     )
-    books = models.ManyToManyField(Book)
+    books = models.ManyToManyField(Book, related_name="+")
