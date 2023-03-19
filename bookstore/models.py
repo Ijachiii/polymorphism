@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model 
+from django.core.exceptions import ValidationError
 
 # Create your models here.
 class Book(models.Model):
@@ -32,6 +33,24 @@ class Book(models.Model):
 
     def __str__(self) -> str:
         return f"[{self.get_type_display()}] {self.name}"
+    
+    def clean(self):
+        if self.type == Book.TYPE_VIRTUAL:
+            if self.weight != 0:
+                raise ValidationError("A virtual product weight cannot exceed zero")
+            
+            if self.download_link is None:
+                raise ValidationError("A virtual product must hae a download link")
+            
+        elif self.type == Book.TYPE_PHYSICAL:
+            if self.weight == 0:
+                raise ValidationError("A physical product weigth must exceed zero")
+            
+            if self.download_link is not None:
+                raise ValidationError("A physical product cannot have a download link")
+            
+        else:
+            assert False, f"Unknown product type '{self.type}'"
     
 
 class Cart(models.Model):
