@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth import get_user_model 
 from django.core.exceptions import ValidationError
-from django.contrib.postgres.fields import JSONField
+from django.db.models import JSONField
 
 # Create your models here.
 class Book(models.Model):
@@ -26,7 +26,7 @@ class Book(models.Model):
 
     #specific attributes
     extra = JSONField()
-    
+
 
     def __str__(self) -> str:
         return f"[{self.get_type_display()}] {self.name}"
