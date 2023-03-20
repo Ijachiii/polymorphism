@@ -8,7 +8,7 @@ class Book(models.Model):
     TYPE_PHYSICAL = "physical"
     TYPE_VIRTUAL = "virtual"
     TYPE_CHOICES = (
-        (TYPE_PHYSICAL, 'Physical'),
+        (TYPE_PHYSICAL, "Physical"),
         (TYPE_VIRTUAL, 'Virtual'),
     )
     type = models.CharField(
