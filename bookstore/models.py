@@ -28,7 +28,7 @@ class Book(models.Model):
     extra = JSONField()
 
 
-    def __str__(self) -> str:
+    def __str__(self) ->:
         return f"[{self.get_type_display()}] {self.name}"
     
     # def clean(self):
