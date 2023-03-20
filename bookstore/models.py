@@ -5,7 +5,7 @@ from django.db.models import JSONField
 
 # Create your models here.
 class Book(models.Model):
-    TYPE_PHYSICAL = 'physical'
+    TYPE_PHYSICAL = "physical"
     TYPE_VIRTUAL = 'virtual'
     TYPE_CHOICES = (
         (TYPE_PHYSICAL, 'Physical'),
